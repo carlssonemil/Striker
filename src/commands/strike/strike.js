@@ -44,7 +44,7 @@ module.exports = class StrikeCommand extends Command {
     });
 
     // Increment the strikes by 1.
-    db.child("strikes").transaction(s => (s || 0) + 1);
+    await db.child("strikes").transaction(s => (s || 0) + 1);
 
     // Get number of strikes.
     let numStrikes = await databaseRef.child(member.id + "/strikes").once("value").then(snapshot => { return snapshot.val() });

@@ -44,7 +44,7 @@ module.exports = class StrikeCommand extends Command {
     });
 
     // Decrement the strikes by 1, or set 0 if no strikes exists or it is already 0.
-    db.child("strikes").transaction(s => (s && s != 0) ? s - 1 : 0);
+    await db.child("strikes").transaction(s => (s && s != 0) ? s - 1 : 0);
 
     // Get number of strikes.
     let numStrikes = await databaseRef.child(member.id + "/strikes").once("value").then(snapshot => { return snapshot.val() });
