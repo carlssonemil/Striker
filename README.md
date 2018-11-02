@@ -1,4 +1,4 @@
-# Striker Bot
+# Striker 🤖⚡
 ### A strike bot for Discord.
 
 <br />
