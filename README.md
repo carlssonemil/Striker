@@ -17,6 +17,8 @@ A strike bot for Discord.
 
 This bot is written in [Node.js](https://nodejs.org/en/) with [Babel](https://babeljs.io/), using the module [Discord.js](https://discord.js.org/#/) for interacting with the [Discord API](https://discordapp.com/developers/docs/intro) and [Firebase](https://firebase.google.com/) for database storage.
 
+> This bot is not publically hosted yet, meaning it is not possible to add it to your server.
+
 ## Installing
 
 * [Node.js](https://nodejs.org/en/) needs to be installed on your computer, you can download it [here](https://nodejs.org/en/download/).
