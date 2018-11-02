@@ -21,6 +21,11 @@ module.exports = class StrikeCommand extends Command {
           validate: username => {
             return username.includes('@') ? true : "A username must be mentioned using '@'."
           }
+        },
+        {
+          key: 'reason',
+          prompt: 'What is the reason for the strike?',
+          type: 'string'
         }
       ]
     });
@@ -31,7 +36,7 @@ module.exports = class StrikeCommand extends Command {
             'The `strike` command requires you to have "Administrator" permission, or one of the following roles: ' + process.env.ALLOWED_ROLES.split(', ').map(role => `"${role}"`).join(', ') + '.';
   }
 
-  async run(message, { username }) {
+  async run(message, { username, reason }) {
     // Get member Object from the message.
     let member = message.mentions.members.first();
 
@@ -47,6 +52,9 @@ module.exports = class StrikeCommand extends Command {
       "avatar": "https://cdn.discordapp.com/avatars/" + member.user.id + "/" + member.user.avatar + ".jpg"
     });
 
+    // Push the strike reason.
+    db.child("reasons").push(reason);
+
     // Increment the strikes by 1.
     await db.child("strikes").transaction(s => (s || 0) + 1);
 
@@ -54,9 +62,9 @@ module.exports = class StrikeCommand extends Command {
     let numStrikes = await databaseRef.child(member.id + "/strikes").once("value").then(snapshot => { return snapshot.val() });
 
     // Send DM to mentioned user that they have been striked.
-    member.sendMessage("You have been striked! 😠 You currently have " + numStrikes + " strikes. ⚡", {files: ["https://cdn.discordapp.com/attachments/330385171851378689/507591820243632150/rfgfgd.png"]});
+    member.sendMessage("You have been striked! 😠 You currently have " + numStrikes + " strikes. ⚡\n\nReason for strike: `" + reason + "`");
 
     // Reply that the user has been striked.
-    return message.say(username + " has been striked! 😠 They currently have " + numStrikes + " strikes. ⚡", {files: ["https://cdn.discordapp.com/attachments/330385171851378689/507591820243632150/rfgfgd.png"]});
+    return message.say(username + " has been striked! 😠 They currently have " + numStrikes + " strikes. ⚡\n\nReason for strike: `" + reason + "`\n\nStrikeBot Dashboard: https://striker-6a2ef.firebaseapp.com/");
   }
 };
