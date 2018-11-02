@@ -1,9 +1,9 @@
 # Striker 🤖⚡
-### A strike bot for Discord.
 
-<br />
+## A strike bot for Discord
 
-## Features:
+## Features
+
 |Command|Description|Example|Result|
 |:-|:-|:-|:-|
 |!strike @[username]|Strikes a user.|!strike @johndoe|@johndoe has been striked!|
@@ -31,4 +31,5 @@ This bot is written in [Node.js](https://nodejs.org/en/) with [Babel](https://ba
 Run ```npm run start``` in the terminal. The bot should now be online in your Discord server if you set everything up correctly.
 
 ## License
+
 Code released under the [MIT License](https://github.com/carlssonemil/project-boilerplate/blob/master/LICENSE).
