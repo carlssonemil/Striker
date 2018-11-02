@@ -41,6 +41,6 @@ module.exports = class StrikesCommand extends Command {
     }
 
     // If passed username is empty, reply with link to striker dashboard.
-    return message.say("Strike Dashboard: https://striker-6a2ef.firebaseapp.com/");
+    return message.say("StrikeBot Dashboard: https://striker-6a2ef.firebaseapp.com/");
   }
 };
