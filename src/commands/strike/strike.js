@@ -1,6 +1,5 @@
 const { Command } = require('discord.js-commando');
 const { databaseRef } = require('../../firebase.js');
-const { allowedRoles } = require('../../index.js');
 
 module.exports = class StrikeCommand extends Command {
   constructor(client) {
@@ -28,8 +27,8 @@ module.exports = class StrikeCommand extends Command {
   }
 
   hasPermission(message) {
-    return (message.member.roles.some(role => allowedRoles.includes(role.name)) || message.member.permissions.has("ADMINISTRATOR")) ? true : 
-            message.member + ', The `strike` command requires you to have "Administrator" permission, or one of the following roles: ' + allowedRoles.map(role => `"${role}"`).join(', ') + '.';
+    return (message.member.roles.some(role => process.env.ALLOWED_ROLES.split(', ').includes(role.name)) || message.member.permissions.has("ADMINISTRATOR")) ? true : 
+            'The `strike` command requires you to have "Administrator" permission, or one of the following roles: ' + process.env.ALLOWED_ROLES.split(', ').map(role => `"${role}"`).join(', ') + '.';
   }
 
   async run(message, { username }) {
