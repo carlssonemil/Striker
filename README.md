@@ -1,8 +1,8 @@
 # Striker 🤖⚡
 
-## A strike bot for Discord
+A strike bot for Discord.
 
-## Features
+## Commands
 
 |Command|Description|Example|Result|
 |:-|:-|:-|:-|
