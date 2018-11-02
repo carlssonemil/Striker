@@ -10,5 +10,3 @@ client.registry.registerDefaults();
 client.registry.registerCommandsIn(__dirname + "/commands");
 
 client.login(process.env.BOT_TOKEN);
-
-export const allowedRoles = ["Påve", "Biskop", "THE PUPPETEER"];
