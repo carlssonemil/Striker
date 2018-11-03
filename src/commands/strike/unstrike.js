@@ -19,7 +19,13 @@ module.exports = class StrikeCommand extends Command {
           prompt: 'What user would you like to unstrike?',
           type: 'string',
           validate: username => {
-            return username.includes('@') ? true : "A username must be mentioned using '@'."
+            // Validate that the username mentioned is not the bot.
+            if (username === "<@" + process.env.BOT_ID + ">") return "You can't strike me, silly. I am the god of strikes 😈 Mention someone else to strike.";
+
+            // Validate that the username passed is a valid user ID.
+            if (!username.includes('<@')) return "A username must be mentioned using '@'.";
+
+            return true;
           }
         }
       ]
