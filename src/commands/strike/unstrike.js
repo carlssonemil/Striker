@@ -20,7 +20,7 @@ module.exports = class StrikeCommand extends Command {
           type: 'string',
           validate: username => {
             // Validate that the username mentioned is not the bot.
-            if (username === "<@" + process.env.BOT_ID + ">") return "You can't strike me, silly. I am the god of strikes 😈 Mention someone else to strike.";
+            if (username === "<@" + process.env.BOT_ID + ">") return "You can't unstrike me, I obviously do not have any strikes 😏 Mention someone else to unstrike.";
 
             // Validate that the username passed is a valid user ID.
             if (!username.includes('<@')) return "A username must be mentioned using '@'.";

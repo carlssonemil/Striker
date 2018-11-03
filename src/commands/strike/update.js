@@ -20,7 +20,7 @@ module.exports = class UpdateCommand extends Command {
           type: 'string',
           validate: username => {
             // Validate that the username mentioned is not the bot.
-            if (username === "<@" + process.env.BOT_ID + ">") return "You can't strike me, silly. I am the god of strikes 😈 Mention someone else to strike.";
+            if (username === "<@" + process.env.BOT_ID + ">") return "I am always up to date, I'm a bot 🤖 Mention someone else to update.";
 
             // Validate that the username passed is a valid user ID.
             if (!username.includes('<@')) return "A username must be mentioned using '@'.";
