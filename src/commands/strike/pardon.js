@@ -63,7 +63,7 @@ module.exports = class StrikeCommand extends Command {
     // Set strikes to 0.
     db.child("strikes").transaction(s => s = 0);
 
-    // Reply that the user has been striked.
+    // Reply that the user has been pardoned.
     return message.say(username + " has been pardoned! 🤩 They currently have 0 strikes. ⚡");
   }
 };
