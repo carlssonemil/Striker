@@ -1,4 +1,6 @@
+const { stripIndents } = require('common-tags');
 const { Command } = require('discord.js-commando');
+const { RichEmbed } = require('discord.js');
 const { databaseRef } = require('../../firebase.js');
 
 module.exports = class StrikeCommand extends Command {
@@ -74,17 +76,30 @@ module.exports = class StrikeCommand extends Command {
     let numStrikes = await databaseRef.child(member.id + "/strikes").once("value").then(snapshot => { return snapshot.val() });
 
     // Send DM to mentioned user that they have been striked.
-    member.send("You have been striked! 😠" +
-                "\n\n**Striked by:** " + message.author.tag +
-                "\n**Reason:** " + reason +
-                "\n**Server:** " + message.guild +
-                "\n**Current strikes:** " + numStrikes);
+    member.send(new RichEmbed()
+      .setDescription(stripIndents`
+        You have been striked! 😠
+
+        **Striked by:** ${ message.author.tag }
+        **Reason:** ${ reason }
+        **Server:** ${ message.guild }
+        **Current strikes:** ${ numStrikes }
+      `)
+      .setColor("#7289DA")
+    );
 
     // Reply that the user has been striked.
-    return message.say(username + " has been striked! 😠" +
-                      "\n\n**Striked by:** " + message.author +
-                      "\n**Reason:** " + reason +
-                      "\n**Current strikes:** " + numStrikes +
-                      "\n\n**StrikeBot Dashboard:** https://striker-6a2ef.firebaseapp.com/");
+    return message.say(new RichEmbed()
+      .setDescription(stripIndents`
+        ${ username } has been striked! 😠
+
+        **Striked by:** ${ message.author }
+        **Reason:** ${ reason }
+        **Current strikes:** ${ numStrikes }
+
+        [View all strikes here](https://striker-6a2ef.firebaseapp.com/)
+        `)
+      .setColor("#7289DA")
+    );
   }
 };
