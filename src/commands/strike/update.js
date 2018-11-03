@@ -32,9 +32,13 @@ module.exports = class UpdateCommand extends Command {
   }
 
   async run(message, { username }) {
+    // Get member Object from the message.
     let member = message.mentions.members.first();
+
+    // Assign database reference to variable.
     let db = databaseRef.child(member.id);
 
+    // Update the item in the database.
     db.update({ 
       "id": member.user.id,
       "username": member.user.username,
@@ -43,6 +47,7 @@ module.exports = class UpdateCommand extends Command {
       "avatar": member.user.displayAvatarURL
     });
 
+    // Reply that the user has been updated.
     return message.say(username + " has been updated! 🙌");
   }
 };
