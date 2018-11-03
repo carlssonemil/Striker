@@ -66,6 +66,6 @@ module.exports = class StrikeCommand extends Command {
     let numStrikes = await databaseRef.child(member.id + "/strikes").once("value").then(snapshot => { return snapshot.val() });
 
     // Reply that the user has been unstriked.
-    return message.say(username + " has been unstriked! 😃 They currently have " + numStrikes + " strikes. ⚡");
+    return message.say(`${ username } has been unstriked! 😃 They currently have ${ numStrikes } strikes. ⚡`);
   }
 };

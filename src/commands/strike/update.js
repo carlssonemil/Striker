@@ -54,6 +54,6 @@ module.exports = class UpdateCommand extends Command {
     });
 
     // Reply that the user has been updated.
-    return message.say(username + " has been updated! 🙌");
+    return message.say(`${ username } has been updated! 🙌`);
   }
 };
