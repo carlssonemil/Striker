@@ -8,7 +8,7 @@ module.exports = class StrikesCommand extends Command {
       group: 'strike',
       memberName: 'strikes',
       description: 'Sends the link to the strikes dashboard, or shows amount of strikes a user has if mentioned.',
-      examples: ['!strikes'],
+      examples: ['!strikes @johndoe#1234', '!strikes'],
       throttling: {
         usages: 3,
         duration: 10
