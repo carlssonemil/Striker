@@ -44,7 +44,7 @@ module.exports = class StrikeCommand extends Command {
       "username": member.user.username,
       "discriminator": member.user.discriminator,
       "nickname": member.nickname,
-      "avatar": "https://cdn.discordapp.com/avatars/" + member.user.id + "/" + member.user.avatar + ".jpg"
+      "avatar": member.user.displayAvatarURL
     });
 
     // Decrement the strikes by 1, or set 0 if no strikes exists or it is already 0.

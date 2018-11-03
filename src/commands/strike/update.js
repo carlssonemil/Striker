@@ -36,7 +36,7 @@ module.exports = class UpdateCommand extends Command {
       "username": member.user.username,
       "discriminator": member.user.discriminator,
       "nickname": member.nickname,
-      "avatar": "https://cdn.discordapp.com/avatars/" + member.user.id + "/" + member.user.avatar + ".jpg"
+      "avatar": member.user.displayAvatarURL
     });
 
     return message.say(username + " has been updated! 🙌");
