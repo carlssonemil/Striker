@@ -11,7 +11,6 @@ const client = new commando.Client({
 client
   .on('error', console.error)
   .on('warn', console.warn)
-  .on('debug', console.log)
   .on('ready', () => {
     console.log(`Client is ready; logged in as ${ client.user.tag } (${ client.user.id })`);
     client.user.setActivity('Half Life 3'); // Easter egg 🤭
