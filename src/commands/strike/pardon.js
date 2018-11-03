@@ -28,8 +28,14 @@ module.exports = class StrikeCommand extends Command {
   }
 
   hasPermission(message) {
-    return (message.member.roles.some(role => allowedRoles.includes(role.name)) || message.member.permissions.has("ADMINISTRATOR")) ? true : 
-            message.member + ', The `strike` command requires you to have "Administrator" permission, or one of the following roles: ' + allowedRoles.map(role => `"${role}"`).join(', ') + '.';
+    // Checks if command was sent from a guild (server) channel.
+    if (message.guild) {
+      return (message.member.roles.some(role => allowedRoles.includes(role.name)) || message.member.permissions.has("ADMINISTRATOR")) ? true : 
+              message.member + ', The `strike` command requires you to have "Administrator" permission, or one of the following roles: ' + allowedRoles.map(role => `"${role}"`).join(', ') + '.';
+    }
+
+    // Return error message if command was sent from a DM.
+    return 'You have to be in a server to do this command. This is a direct message, silly 😉';
   }
 
   async run(message, { username }) {

@@ -9,7 +9,6 @@ module.exports = class UpdateCommand extends Command {
       memberName: 'update',
       description: 'Updates a users nickname and avatar in database.',
       examples: ['!update @username'],
-      userPermissions: ['ADMINISTRATOR'],
       throttling: {
         usages: 3,
         duration: 10
@@ -25,6 +24,11 @@ module.exports = class UpdateCommand extends Command {
         }
       ]
     });
+  }
+
+  hasPermission(message) {
+    // Checks if command was sent from a guild (server) channel.
+    return message.guild ? true : 'You have to be in a server to do this command. This is a direct message, silly 😉';
   }
 
   async run(message, { username }) {
