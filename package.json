@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf dist",
+    "dev": "nodemon --watch src --exec \"npm run build && npm run start\"",
     "build": "npm run clean && babel src -d dist",
-    "start": "npm run build && nodemon dist/index.js"
+    "start": "node dist/index.js"
   },
   "author": "",
   "license": "MIT",
