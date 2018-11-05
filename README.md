@@ -24,18 +24,47 @@ This bot is written in [Node.js](https://nodejs.org/en/) with [Babel](https://ba
 - [ ] Add a [SettingProvider](https://discord.js.org/#/docs/commando/master/class/SettingProvider).
 - [ ] Host publicly, allowing anyone to add the bot to their server.
 
-## Installing
+## Installing & running
 
-* [Node.js](https://nodejs.org/en/) needs to be installed on your computer, you can download it [here](https://nodejs.org/en/download/).
-* Run ```npm install``` in the terminal to install all dependencies.
+> [Node.js](https://nodejs.org/en/) needs to be installed on your computer to start the bot, you can download it [here](https://nodejs.org/en/download/).
 
-## Setup
+1. Clone this repository.
+    ```
+    git clone https://github.com/carlssonemil/Striker.git
+    ```
+2. Run `npm install` to install dependencies.
+3. Create `.env` file and enter the correct values, see [`.env.example`](https://github.com/carlssonemil/Striker/blob/master/.env.example).
+4. Start the bot locally with `npm run start`, or `npm run dev` for development*.
+5. If you set everything up correctly you should be met with the following message:
+    ```
+    LIVE Client is logged in and ready.
 
-*Will describe setup later. Tl;dr: Bot Token and Firebase config needs to be setup inside a .env file. See [.env.example](https://github.com/carlssonemil/striker-bot/blob/master/.env.example).*
+      Logged in as:
+      - Username: <The bot's Discord username>
+      - Bot ID: <The bot's ID>
 
-## Running the bot
+      Process will restart when files are changed. Press Ctrl+C to end process.
+    ```
+6. The bot is now logged into Discord and is listening to all channels it has permission to in the server you invited it to.
 
-Run ```npm run start``` in the terminal. The bot should now be online in your Discord server if you set everything up correctly.
+( * Utilizing [nodemon](https://nodemon.io/) to restart server on filechange. )
+
+### Environment Variables
+
+> The bot is currently using Firebase to store and fetch data. This might change in the future.
+
+|Name|Description|
+|:--|:--|
+|BOT_TOKEN|The bot token used to log into the [Discord API](https://discordapp.com/developers/docs/intro) with, see [this guide](https://anidiots.guide/getting-started/getting-started-long-version) on how to get the token.|
+|BOT_ID|The client ID for the bot, follow guide mentioned above if you're unsure.|
+|FIREBASE_APIKEY|The API key for your firebase project. Follow [this guide](https://firebase.google.com/docs/web/setup) on how to setup a Firebase project.|
+|FIREBASE_AUTHDOMAIN|The authentication domain. (see [guide](https://firebase.google.com/docs/web/setup))|
+|FIREBASE_DATABASEURL|The database URL. (see [guide](https://firebase.google.com/docs/web/setup))|
+|FIREBASE_PROJECTID|The project ID. (see [guide](https://firebase.google.com/docs/web/setup))|
+|FIREBASE_STORAGEBUCKET|The storage bucket. (see [guide](https://firebase.google.com/docs/web/setup))|
+|FIREBASE_MESSAGINGSENDERID|The messaging sender ID. (see [guide](https://firebase.google.com/docs/web/setup))|
+|ALLOWED_ROLES|The [roles](https://discordapp.com/developers/docs/topics/permissions#role-object) in your Discord server that are allowed to do commands. Default is users with the [permission](https://discordapp.com/developers/docs/topics/permissions) "Administrator". Separate by colon and space, i.e. "Admin, Raider, Casual"|
+|OWNER_ID|The bot's owner ID, this is so people know who to contact if bot gets an error. *(optional)*|
 
 ## License
 
