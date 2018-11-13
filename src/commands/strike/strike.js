@@ -42,8 +42,10 @@ module.exports = class StrikeCommand extends Command {
   hasPermission(message) {
     // Checks if command was sent from a guild (server) channel.
     if (message.guild) {
-      return (message.member.roles.some(role => process.env.ALLOWED_ROLES.split(', ').includes(role.name)) || message.member.permissions.has("ADMINISTRATOR")) ? true : 
-              'The `strike` command requires you to have "Administrator" permission, or one of the following roles: ' + process.env.ALLOWED_ROLES.split(', ').map(role => `"${role}"`).join(', ') + '.';
+      return (message.member.roles.some(role => process.env.ALLOWED_ROLES.split(', ').includes(role.name)) || 
+              message.member.permissions.has("ADMINISTRATOR")) ||
+              message.member.id === process.env.OWNER_ID ? 
+              true : 'The `strike` command requires you to have "Administrator" permission, or one of the following roles: ' + process.env.ALLOWED_ROLES.split(', ').map(role => `"${role}"`).join(', ') + '.';
     }
 
     // Return error message if command was sent from a DM.
